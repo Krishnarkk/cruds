@@ -1,0 +1,16 @@
+{
+    "employee":[
+        {   "id":1,
+            "ename":"Krishna",
+            "eposition":"Developer"
+        },
+        {   "id":2,
+            "ename":"Praveen",
+            "eposition":"Developer2"
+        },
+        {   "id":3,
+            "ename":"Rashmi",
+            "eposition":"Tester"
+        }
+    ]
+}
