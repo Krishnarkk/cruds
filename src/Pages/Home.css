@@ -39,6 +39,6 @@ box-shadow:  32px 32px 64px #ededed,
 
   body{
     background-color:azure;
-    height: 50vh;
+    box-sizing: border-box;
   }
 
