@@ -1,0 +1,18 @@
+.form-box {
+    max-width: 500px;
+    margin: auto;
+    padding: 50px;
+    border-radius: 50px;
+    border-radius: 50px;
+    background: #fefbfb;
+    box-shadow:  20px 20px 86px #eae7e7,
+                 -20px -20px 86px #ffffff;
+  }
+  .form-control{
+    border-radius: 10px;
+    background: #fefbfb;
+    box-shadow:  20px 20px 86px #d8d5d5,
+                 -20px -20px 86px #ffffff;
+    
+
+  }
