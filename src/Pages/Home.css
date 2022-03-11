@@ -16,3 +16,28 @@
     
 
   }
+  .main-rows{
+    margin-left: 7em;
+  }
+  .card-des{
+    border-radius: 51px;
+background: #ffffff;
+box-shadow:  32px 32px 64px #ededed,
+             -32px -32px 64px #ffffff;
+  }
+  .action{
+    display: flex;
+    justify-content: end;
+    position: relative;
+    bottom: 2em;
+  }
+  .m-45{
+    padding: 3px;
+    margin-right: 8px;
+
+  }
+
+  body{
+    background-color:azure;
+  }
+
