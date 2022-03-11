@@ -47,8 +47,8 @@ const Home = () => {
        
        <div className='col'> <h1>{id}</h1></div>
        <div className='col mr-2'>
-        <p>delete</p>
-        <p>edit</p>
+        <p>Delete</p>
+        <p>Edit</p>
 
         </div>
         </div>
