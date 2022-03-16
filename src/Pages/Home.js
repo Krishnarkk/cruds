@@ -46,7 +46,7 @@ const Home = () => {
 } 
     return (
 
-        <>
+        <div className='bg-warning'>
             <h1 className='text-center text-success'> React CRUD application </h1>
             <div className='form-box mt-5'>
                 <form>
@@ -68,21 +68,21 @@ const Home = () => {
             <div className='row container main-rows'>
                 {
                     data.map(({id,name,pos})=>
-                    <div key={id} className='col-sm-3 mb-5'>
-                       <div className='card'>
+                    <div key={id} className='col-sm-3 mb-2'>
+                       <div className='card bg-warning bg-warning shadow-lg p-3 mb-5 rounded'>
                            <div className='card-body'>
                                <div>
-                               <button className='btn btn-danger' onClick={()=>handleDelete(id,name)}>delete</button>
-                                 <button  className="btn btn-success"   onClick={()=>handleUpdate(id,name,pos)}>Edit</button>
+                               <button className='btn btn-danger p-1 m-2' onClick={()=>handleDelete(id,name)}>delete</button>
+                                 <button  className="btn btn-success p-1 m-2 "   onClick={()=>handleUpdate(id,name,pos)}>Edit</button>
                                  </div>
-                                <h1 className='text-warning'>{name}</h1>
-                                <h1 className='text-danger'>{pos}</h1>
+                                <h2 className='text-success'>Name:{name}</h2>
+                                <h2 className='text-primary'>Position:{pos}</h2>
                                </div>
                            </div>
                     </div>
                     )}
              </div>
-        </>
+        </div>
     )
 }
 
