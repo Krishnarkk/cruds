@@ -72,8 +72,8 @@ const Home = () => {
                        <div className='card'>
                            <div className='card-body'>
                                <div>
-                               <button onClick={()=>handleDelete(id,name)}><i className='fa fa-trash'></i></button>
-                                 <button onClick={()=>handleUpdate(id,name,pos)}><i className='fa fa-edit'></i></button>
+                               <button className='btn btn-danger' onClick={()=>handleDelete(id,name)}>delete</button>
+                                 <button  className="btn btn-success"   onClick={()=>handleUpdate(id,name,pos)}>Edit</button>
                                  </div>
                                 <h1 className='text-warning'>{name}</h1>
                                 <h1 className='text-danger'>{pos}</h1>
