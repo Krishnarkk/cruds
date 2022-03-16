@@ -1,44 +1,18 @@
-.form-box {
+.form-box{
     max-width: 500px;
     margin: auto;
     padding: 50px;
-    border-radius: 50px;
-    border-radius: 50px;
-    background: #fefbfb;
-    box-shadow:  20px 20px 86px #eae7e7,
-                 -20px -20px 86px #ffffff;
-  }
-  .form-control{
+    border-radius:50px ;
+    background-color: #cbce39;
+    box-shadow: 20px 20px 86px #eae7e7 
+                -20px -20px 86px #ffffff;
+}
+.form-control{
     border-radius: 10px;
-    background: #fefbfb;
-    box-shadow:  20px 20px 86px #d8d5d5,
-                 -20px -20px 86px #ffffff;
+    background-color: #feffbb;
     
-
-  }
-  .main-rows{
-    margin-left: 7em;
-  }
-  .card-des{
-    border-radius: 51px;
-background: #ffffff;
-box-shadow:  32px 32px 64px #ededed,
-             -32px -32px 64px #ffffff;
-  }
-  .action{
-    display: flex;
-    justify-content: end;
-    position: relative;
-    bottom: 2em;
-  }
-  .m-45{
-    padding: 3px;
-    margin-right: 8px;
-
-  }
-
-  body{
-    background-color:azure;
-    box-sizing: border-box;
-  }
-
+}
+.main-rows{
+    margin-top: 40px;
+    margin-left: 95px;
+}

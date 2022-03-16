@@ -1,74 +1,89 @@
-import React, { useState } from 'react'
+import React,{useEffect, useState} from 'react'
 import './Home.css';
 import axios from 'axios'
-
-
+import { useNavigate } from 'react-router-dom';
 const Home = () => {
-  const [name, setName] = useState('');
-  const [pos, setPos] = useState('');
-  const [data, setData] = useState([])
-  // axios.get('http://localhost:3333/employee')
+    const navigate=useNavigate();
+    const[name,setName]=useState('');
+    const[pos,setPos]=useState('');
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    axios.post("https://622af5bb14ccb950d22a527a.mockapi.io/Employee", { name, pos })
-      // .then(res=>console.log(res))
-      .then(() => window.location.reload())
+    const[data,setData]=useState([]);
+  const handleSubmit=(e)=>{
+      e.preventDefault();
+      axios.post('https://622af5bb14ccb950d22a527a.mockapi.io/Employee',{name,pos})
+      .then(()=>window.location.reload())
+    //   .catch(err=>console.log(err))
 
   }
-  axios.get("https://622af5bb14ccb950d22a527a.mockapi.io/Employee").then(res => setData(res.data))
-  return (
-    <>
-    <h1 className='text-secondary text-center'>React Crud</h1>
-      <div className='form-box mt-5'>
-        <form >
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input class="form-control" id="name" type="text" name="Name" onChange={(e) => { setName(e.target.value) }} />
-          </div>
-          <div class="form-group">
-            <label for="email">Position</label>
-            <input class="form-control" id="email" onChange={(e) => { setPos(e.target.value) }} type="email" name="Email" />
-          </div>
-        </form>
-        <div className=' d-grid text-center mt-3'>
-          <button className='btn btn-primary btn-lg ' onClick={handleSubmit}>Submit</button>
-        </div>
-      </div>
-      <div>
-        <div class="row main-rows container mt-5">
-          {
-            data.map(({ id, name, pos }) =>
-              <>
-                <div class="col-sm-3 mb-5">
-                   <div class="card card-des">
-                    <div class="card-body">
-                      <div className='row'>
-                        <div className='col'> <p>EmpID:{id}</p>
-                       <div className='action'>
-                        <button className='
-                        btn btn-danger m-45'>Delete</button>
-                        <button className='
-                        btn btn-success m-45'>Edit</button>
-                        </div>
-                          <h2 class="card-title text-warning">{name}</h2>
-                          <h3 class="card-text text-danger ">{pos}</h3>
-                        </div>
-                      </div>
 
+   useEffect(()=>{
+    axios.get("https://622af5bb14ccb950d22a527a.mockapi.io/Employee")
+      .then(res=>{setData(res.data)})
+    },[])
+ 
+   const handleDelete=(id,name)=>{
+       axios.delete(`https://622af5bb14ccb950d22a527a.mockapi.io/Employee/${id}`)
+      .then(()=>{alert(`are you sure want to delete ${name}`)
+       var newData=data.filter((item)=>{
 
+        //  id==> selected id or main id
+        //   item == entire old Array 
+           return item.id!==id    
+        //    (I need to return elements whose id is not equal to main selected id)
+       })
+       setData(newData)
+      
+    })
+       
+    
+
+   }
+   const  handleUpdate=(id,name,pos)=>{
+       localStorage.setItem('id',id);
+       localStorage.setItem('name',name);
+       localStorage.setItem('pos',pos);
+    navigate('/update')    
+} 
+    return (
+
+        <>
+            <h1 className='text-center text-success'> React CRUD application </h1>
+            <div className='form-box mt-5'>
+                <form>
+                    <div className='form-group'>
+                        <label>Name</label>
+                        <input type="text" className="form-control" placeholder='name' value={ name} onChange={(e)=>setName(e.target.value)}/>
                     </div>
-                  </div>
+                    <div className='form-group'>
+                        <label>Position</label>
+                        <input className="form-control" type="text" placeholder='position' value={pos} onChange={ (e)=>setPos(e.target.value)} />
+                    </div>
+                    <div className='d-grid text-center mt-3'>
+                        <button className='btn btn-lg btn-primary' onClick={handleSubmit}>Submit</button>
+                    </div>
+                </form>
 
-                </div>
-              </>
-            )
-          }
-        </div>
-      </div>
+            </div>
 
-    </>
-  )
+            <div className='row container main-rows'>
+                {
+                    data.map(({id,name,pos})=>
+                    <div key={id} className='col-sm-3 mb-5'>
+                       <div className='card'>
+                           <div className='card-body'>
+                               <div>
+                               <button onClick={()=>handleDelete(id,name)}><i className='fa fa-trash'></i></button>
+                                 <button onClick={()=>handleUpdate(id,name,pos)}><i className='fa fa-edit'></i></button>
+                                 </div>
+                                <h1 className='text-warning'>{name}</h1>
+                                <h1 className='text-danger'>{pos}</h1>
+                               </div>
+                           </div>
+                    </div>
+                    )}
+             </div>
+        </>
+    )
 }
 
 export default Home
